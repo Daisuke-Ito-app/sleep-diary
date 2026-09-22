@@ -160,13 +160,13 @@ function addRow(d={}, silent=false){
   }
 
   const dateInput=addInputCell("date","date");
+  const finalWakeInput=addInputCell("time","finalWake");
+  const outInput=addInputCell("time","out");
+  const napInput=addInputCell("number","nap",{min:0,max:600,placeholder:"例 30"});
   const bedInput=addInputCell("time","bed");
   const lightsInput=addInputCell("time","lights");
   const solInput=addInputCell("number","sol",{min:0,max:600,placeholder:"例 30"});
   const wasoInput=addInputCell("number","waso",{min:0,max:600,placeholder:"例 45"});
-  const finalWakeInput=addInputCell("time","finalWake");
-  const outInput=addInputCell("time","out");
-  const napInput=addInputCell("number","nap",{min:0,max:600,placeholder:"例 30"});
 
   setInputValue(tr,"date",d.date||"");
   setInputValue(tr,"bed",d.bed||"");
@@ -378,7 +378,7 @@ function makePaper(){
     const table=document.createElement("table");
     const thead=document.createElement("thead");
     const trh=document.createElement("tr");
-    ["起きた朝の日付","寝床へ入った時刻","眠ろうとした時刻","寝つくまで","夜中に起きていた時間","最後に目が覚めた時刻","寝床から出た時刻","昼寝・うたた寝"].forEach(t=>{
+    ["起きた朝の日付","最後に目が覚めた時刻","寝床から出た時刻","前日の昼寝・うたた寝","前日の夜 寝床へ入った時刻","前日の夜 眠ろうとした時刻","寝つくまで","夜中に起きていた時間"].forEach(t=>{
       const th=document.createElement("th"); th.textContent=t; trh.appendChild(th);
     });
     thead.appendChild(trh);
@@ -386,7 +386,7 @@ function makePaper(){
     const tbody=document.createElement("tbody");
     rows.forEach(r=>{
       const tr=document.createElement("tr");
-      [r.date||"",r.bed,r.lights,`${r.sol}分`,`${r.waso}分`,r.finalWake,r.out,`${r.nap||0}分`].forEach(v=>{
+      [r.date||"",r.finalWake,r.out,`${r.nap||0}分`,r.bed,r.lights,`${r.sol}分`,`${r.waso}分`].forEach(v=>{
         const td=document.createElement("td"); td.textContent=String(v); tr.appendChild(td);
       });
       tbody.appendChild(tr);

@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_NAME = "sleep-diary-final-pwa-v2";
+const CACHE_NAME = "sleep-diary-final-pwa-v3";
 const BASE = new URL("./", self.location.href);
 const ALLOWED_PATHS = new Set([
   new URL("./", BASE).pathname,
