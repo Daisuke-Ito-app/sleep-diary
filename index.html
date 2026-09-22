@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#17365d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="睡眠日誌">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'; worker-src 'self';">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="stylesheet" href="./style.css">
+<title>睡眠日誌 自宅記録ツール</title>
+</head>
+<body>
+<header>
+<div class="wrap">
+  <h1>睡眠日誌 自宅記録ツール</h1>
+  <div class="sub">CBT-I評価前後の睡眠記録｜今お使いのPCやスマートフォン内に保存</div>
+  <div class="statusbar">
+    <span id="offlineBadge" class="badge">通信状態を確認中</span>
+    <span id="storageBadge" class="badge">PCやスマートフォンへの保存：準備中</span>
+  </div>
+</div>
+</header>
+
+<main>
+<div class="alert green">
+<strong>入力した睡眠記録は、今お使いのPCやスマートフォンの中にのみ保存されます。</strong><br>
+睡眠記録を医院や外部サーバーへ自動送信する機能はありません。氏名・住所・電話番号・診察券番号など、個人を特定できる情報は入力しないでください。
+</div>
+<div class="alert orange small">
+ご自身のPCやスマートフォンなど、他の方と共有しない機器で使用してください。ブラウザの「閲覧データ」や「サイトデータ」を削除すると、睡眠記録が消えることがあります。PCやスマートフォンを変更しても、記録は自動では引き継がれません。</div>
+
+<section class="card">
+<h2>1. 患者背景</h2>
+<div class="grid">
+  <div><label>年齢</label><input id="age" type="number" min="18" max="110" inputmode="numeric"></div>
+  <div><label>勤務</label><select id="work"><option>日勤</option><option>夜勤</option><option>交代勤務</option><option>不規則</option><option>無職・退職</option><option>その他</option></select></div>
+  <div><label>車の運転</label><select id="driving"><option value="none">しない</option><option value="private">時々する</option><option value="daily">日常的にする</option><option value="work">仕事で運転する</option></select></div>
+  <div><label>昼間の眠気</label><select id="sleepiness"><option value="none">特になし</option><option value="mild">少しある</option><option value="severe">強くある</option></select></div>
+</div>
+
+<h3>当てはまるもの</h3>
+<div id="flags" class="checkgrid">
+<label class="opt"><input type="checkbox" value="転倒歴">転倒したことがある</label>
+<label class="opt"><input type="checkbox" value="てんかん">てんかんがある</label>
+<label class="opt"><input type="checkbox" value="躁・軽躁疑い">睡眠が少なくても平気で、普段よりかなり元気・活動的になる時がある</label>
+<label class="opt"><input type="checkbox" value="OSAまたは疑い">睡眠時無呼吸症候群、またはその疑いがある</label>
+<label class="opt"><input type="checkbox" value="夜間頻尿">夜間のトイレが多い</label>
+<label class="opt"><input type="checkbox" value="睡眠薬2剤以上">睡眠薬を2種類以上使っている</label>
+</div>
+</section>
+
+<section class="card">
+<h2>2. 睡眠日誌</h2>
+<div class="alert green small">まず7～14日程度を目安に記録してください。入力・変更内容は自動的に今お使いのPCやスマートフォン内へ保存されます。</div>
+
+<div class="alert blue">
+<strong>睡眠日誌の書き方</strong><br>
+できるだけ毎朝、前日の夜～今朝までの睡眠を思い出して記録してください。正確な分単位でなくても、だいたいの時刻・時間で構いません。
+</div>
+
+<div class="card">
+<h3>各項目の意味</h3>
+<div class="tablewrap">
+<table>
+<thead><tr><th>項目</th><th>何を記録するか</th><th>例</th></tr></thead>
+<tbody>
+<tr><td><strong>日付</strong></td><td>その睡眠をとった翌朝の日付です。</td><td>9/22夜→9/23朝なら 9/23</td></tr>
+<tr><td><strong>寝床に入った時刻</strong></td><td>眠るためにベッド・布団に入った時刻です。</td><td>22:30</td></tr>
+<tr><td><strong>消灯時刻</strong></td><td>スマホ等をやめ、照明を消して「眠ろう」とした時刻です。</td><td>23:00</td></tr>
+<tr><td><strong>寝つくまで（分）</strong></td><td>消灯してから実際に眠るまでのおおよその時間です。</td><td>30分</td></tr>
+<tr><td><strong>夜中に起きていた合計（分）</strong></td><td>寝ついた後、夜中に目が覚めていた時間の合計です。</td><td>45分</td></tr>
+<tr><td><strong>最後に目覚めた時刻</strong></td><td>朝、最後に目が覚め、その後もう眠らなかった時刻です。</td><td>5:50</td></tr>
+<tr><td><strong>寝床を出た時刻</strong></td><td>朝、実際にベッド・布団から出た時刻です。</td><td>6:20</td></tr>
+<tr><td><strong>昼寝（分）</strong></td><td>日中の昼寝・うたた寝の合計です。</td><td>30分</td></tr>
+</tbody>
+</table>
+</div>
+<div class="small"><strong>記録のポイント：</strong>時計を見続ける必要はありません。毎日同じ方法で、おおよその時刻を記録することが大切です。</div>
+</div>
+
+<div class="actions">
+<button type="button" class="secondary" id="add1">1日追加</button>
+<button type="button" class="secondary" id="add7">7日追加</button>
+</div>
+
+<div class="tablewrap">
+<table id="diaryTable">
+<thead>
+<tr><th>起きた朝の日付</th><th>就床</th><th>消灯</th><th>寝つくまで</th><th>夜間覚醒合計</th><th>最終覚醒</th><th>離床</th><th>昼寝</th><th>TIB</th><th>TST</th><th>SE</th><th></th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<div class="actions"><button type="button" class="primary" id="calc">計算する</button></div>
+
+<div class="metricgrid">
+<div class="metric"><small>有効記録日数</small><b id="daysOut">—</b></div>
+<div class="metric"><small>平均TIB</small><b id="avgTIB">—</b></div>
+<div class="metric"><small>平均TST</small><b id="avgTST">—</b></div>
+<div class="metric"><small>平均SE</small><b id="avgSE">—</b></div>
+<div class="metric"><small>平均SOL</small><b id="avgSOL">—</b></div>
+<div class="metric"><small>平均WASO</small><b id="avgWASO">—</b></div>
+</div>
+<div id="err" class="alert red hidden"></div>
+</section>
+
+<section class="card">
+<h2>3. PCやスマートフォン内のデータ管理</h2>
+<div class="alert blue small">
+睡眠記録は、ブラウザのIndexedDBという保存領域を使って、今お使いのPCやスマートフォン内に自動保存されます。医院や外部サーバーへの保存・送信は行いません。
+</div>
+<div class="actions">
+<button type="button" class="secondary" id="exportData">バックアップを書き出す</button>
+<button type="button" class="secondary" id="importData">バックアップを読み込む</button>
+<input id="importFile" type="file" accept="application/json,.json" class="hidden">
+<button type="button" class="danger" id="deleteSaved">このPCやスマートフォンの記録をすべて削除</button>
+</div>
+<div class="small">※ バックアップファイルにも睡眠記録が含まれます。ご自身で管理できる安全な場所に保管してください。</div>
+</section>
+
+<section class="card">
+<h2>4. 診察時に医師へ見せる内容</h2>
+<div class="alert blue">
+「診察用表示を作成」を押すと、背景情報・平均値・各日の記録をまとめて表示します。この画面を医師に見せるか、必要に応じて紙へ転記してください。
+</div>
+<div class="actions"><button type="button" class="primary" id="makePaper">診察用表示を作成</button></div>
+<div id="paperArea" class="paper">
+<h3>診察用まとめ</h3>
+<div id="paperText">「診察用表示を作成」を押してください。</div>
+</div>
+</section>
+
+<section class="card">
+<h2>ホーム画面に追加して使う</h2>
+<div class="small">
+このページはPWAに対応しています。HTTPSで公開し、対応ブラウザで「ホーム画面に追加」「アプリをインストール」すると、アプリのように起動できます。初回読み込み後は、主要画面をオフラインでも使用できます。
+</div>
+</section>
+
+<section class="card">
+<h2>データの取り扱いについて</h2>
+<div class="small">
+このツールの画面を表示・更新するための通常のインターネット通信は発生しますが、入力した睡眠記録を医院や外部サーバーへ自動送信する機能はありません。睡眠記録は、今お使いのPCやスマートフォン内に保存されます。
+</div>
+</section>
+
+<section class="card">
+<h2>略語の説明</h2>
+<div class="small">
+<strong>TIB</strong>：Time in Bed＝寝床にいた時間<br>
+<strong>TST</strong>：Total Sleep Time＝実際に眠っていたと推定される時間<br>
+<strong>SOL</strong>：Sleep Onset Latency＝消灯後、寝つくまでの時間<br>
+<strong>WASO</strong>：Wake After Sleep Onset＝寝ついた後、夜中に起きていた時間の合計<br>
+<strong>SE</strong>：Sleep Efficiency＝睡眠効率（TST ÷ TIB ×100）
+</div>
+</section>
+</main>
+
+<div id="toast" class="toast">保存しました</div>
+<script src="./app.js" defer></script>
+</body>
+</html>

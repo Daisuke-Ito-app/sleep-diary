@@ -1,0 +1,25 @@
+{
+  "name": "睡眠日誌 自宅記録ツール",
+  "short_name": "睡眠日誌",
+  "description": "CBT-I評価前後の睡眠日誌を今お使いのPCやスマートフォン内だけに保存するPWA",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#17365d",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
