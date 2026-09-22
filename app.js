@@ -358,19 +358,19 @@ function makePaper(){
 
   const line2=document.createElement("div");
   line2.className="paperline";
-  line2.textContent=`安全確認：${flags.length?flags.join("、"):"特になし"}`;
+  line2.textContent=`安全のための確認：${flags.length?flags.join("、"):"特になし"}`;
   container.appendChild(line2);
 
   if(rows.length){
     const avg=k=>rows.reduce((s,r)=>s+r[k],0)/rows.length;
     const line3=document.createElement("div");
     line3.className="paperline";
-    line3.textContent=`有効記録：${rows.length}日　平均TIB：${fmt(avg("tib"))}　平均TST：${fmt(avg("tst"))}　平均SE：${avg("se").toFixed(1)}%`;
+    line3.textContent=`計算に使えた日数：${rows.length}日　平均 寝床にいた時間：${fmt(avg("tib"))}　平均 推定睡眠時間：${fmt(avg("tst"))}　平均 睡眠効率：${avg("se").toFixed(1)}%`;
     container.appendChild(line3);
 
     const line4=document.createElement("div");
     line4.className="paperline";
-    line4.textContent=`平均SOL：${Math.round(avg("sol"))}分　平均WASO：${Math.round(avg("waso"))}分`;
+    line4.textContent=`平均 寝つくまで：${Math.round(avg("sol"))}分　平均 夜中に起きていた時間：${Math.round(avg("waso"))}分`;
     container.appendChild(line4);
 
     const wrap=document.createElement("div");
@@ -378,7 +378,7 @@ function makePaper(){
     const table=document.createElement("table");
     const thead=document.createElement("thead");
     const trh=document.createElement("tr");
-    ["日付","就床","消灯","SOL","WASO","最終覚醒","離床","昼寝"].forEach(t=>{
+    ["起きた朝の日付","寝床へ入った時刻","眠ろうとした時刻","寝つくまで","夜中に起きていた時間","最後に目が覚めた時刻","寝床から出た時刻","昼寝・うたた寝"].forEach(t=>{
       const th=document.createElement("th"); th.textContent=t; trh.appendChild(th);
     });
     thead.appendChild(trh);

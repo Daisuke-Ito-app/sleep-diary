@@ -35,21 +35,55 @@
 ご自身のPCやスマートフォンなど、他の方と共有しない機器で使用してください。ブラウザの「閲覧データ」や「サイトデータ」を削除すると、睡眠記録が消えることがあります。PCやスマートフォンを変更しても、記録は自動では引き継がれません。</div>
 
 <section class="card">
-<h2>1. 患者背景</h2>
+<h2>1. はじめに教えてください</h2>
+<div class="alert blue small">
+睡眠の状態を安全に確認するための質問です。分かる範囲で選んでください。
+</div>
 <div class="grid">
-  <div><label>年齢</label><input id="age" type="number" min="18" max="110" inputmode="numeric"></div>
-  <div><label>勤務</label><select id="work"><option>日勤</option><option>夜勤</option><option>交代勤務</option><option>不規則</option><option>無職・退職</option><option>その他</option></select></div>
-  <div><label>車の運転</label><select id="driving"><option value="none">しない</option><option value="private">時々する</option><option value="daily">日常的にする</option><option value="work">仕事で運転する</option></select></div>
-  <div><label>昼間の眠気</label><select id="sleepiness"><option value="none">特になし</option><option value="mild">少しある</option><option value="severe">強くある</option></select></div>
+  <div>
+    <label>年齢（今の満年齢）</label>
+    <input id="age" type="number" min="18" max="110" inputmode="numeric" placeholder="例：45">
+  </div>
+  <div>
+    <label>ふだんの仕事・生活の時間帯</label>
+    <select id="work">
+      <option>日勤</option>
+      <option>夜勤</option>
+      <option>交代勤務</option>
+      <option>不規則</option>
+      <option>無職・退職</option>
+      <option>その他</option>
+    </select>
+    <div class="small">夜勤や日によって勤務時間が変わる場合は、近いものを選んでください。</div>
+  </div>
+  <div>
+    <label>車を運転することがありますか？</label>
+    <select id="driving">
+      <option value="none">運転しない</option>
+      <option value="private">時々運転する</option>
+      <option value="daily">ほぼ毎日運転する</option>
+      <option value="work">仕事で運転する</option>
+    </select>
+  </div>
+  <div>
+    <label>昼間、眠くて困ることがありますか？</label>
+    <select id="sleepiness">
+      <option value="none">ほとんどない</option>
+      <option value="mild">少しある</option>
+      <option value="severe">強くある</option>
+    </select>
+    <div class="small">仕事中や運転中に眠くなる場合は、「強くある」を選んでください。</div>
+  </div>
 </div>
 
-<h3>当てはまるもの</h3>
+<h3>安全に治療するための確認</h3>
+<div class="small">今までに当てはまるものがあればチェックしてください。</div>
 <div id="flags" class="checkgrid">
-<label class="opt"><input type="checkbox" value="転倒歴">転倒したことがある</label>
-<label class="opt"><input type="checkbox" value="てんかん">てんかんがある</label>
-<label class="opt"><input type="checkbox" value="躁・軽躁疑い">睡眠が少なくても平気で、普段よりかなり元気・活動的になる時がある</label>
-<label class="opt"><input type="checkbox" value="OSAまたは疑い">睡眠時無呼吸症候群、またはその疑いがある</label>
-<label class="opt"><input type="checkbox" value="夜間頻尿">夜間のトイレが多い</label>
+<label class="opt"><input type="checkbox" value="転倒歴">最近、転んだことがある</label>
+<label class="opt"><input type="checkbox" value="てんかん">てんかんと診断されたことがある</label>
+<label class="opt"><input type="checkbox" value="躁・軽躁疑い">睡眠時間が少なくても眠くならず、いつもよりかなり元気・活発になる時がある</label>
+<label class="opt"><input type="checkbox" value="OSAまたは疑い">睡眠時無呼吸症候群と診断された、または「いびき・無呼吸」を指摘されたことがある</label>
+<label class="opt"><input type="checkbox" value="夜間頻尿">夜中に何度もトイレへ行くことがある</label>
 <label class="opt"><input type="checkbox" value="睡眠薬2剤以上">睡眠薬を2種類以上使っている</label>
 </div>
 </section>
@@ -60,7 +94,7 @@
 
 <div class="alert blue">
 <strong>睡眠日誌の書き方</strong><br>
-できるだけ毎朝、前日の夜～今朝までの睡眠を思い出して記録してください。正確な分単位でなくても、だいたいの時刻・時間で構いません。
+できるだけ毎朝、起きたあとに「昨夜から今朝までの睡眠」を思い出して記録してください。時計を何度も確認する必要はありません。だいたいの時刻・時間で大丈夫です。
 </div>
 
 <div class="card">
@@ -69,14 +103,46 @@
 <table>
 <thead><tr><th>項目</th><th>何を記録するか</th><th>例</th></tr></thead>
 <tbody>
-<tr><td><strong>日付</strong></td><td>その睡眠をとった翌朝の日付です。</td><td>9/22夜→9/23朝なら 9/23</td></tr>
-<tr><td><strong>寝床に入った時刻</strong></td><td>眠るためにベッド・布団に入った時刻です。</td><td>22:30</td></tr>
-<tr><td><strong>消灯時刻</strong></td><td>スマホ等をやめ、照明を消して「眠ろう」とした時刻です。</td><td>23:00</td></tr>
-<tr><td><strong>寝つくまで（分）</strong></td><td>消灯してから実際に眠るまでのおおよその時間です。</td><td>30分</td></tr>
-<tr><td><strong>夜中に起きていた合計（分）</strong></td><td>寝ついた後、夜中に目が覚めていた時間の合計です。</td><td>45分</td></tr>
-<tr><td><strong>最後に目覚めた時刻</strong></td><td>朝、最後に目が覚め、その後もう眠らなかった時刻です。</td><td>5:50</td></tr>
-<tr><td><strong>寝床を出た時刻</strong></td><td>朝、実際にベッド・布団から出た時刻です。</td><td>6:20</td></tr>
-<tr><td><strong>昼寝（分）</strong></td><td>日中の昼寝・うたた寝の合計です。</td><td>30分</td></tr>
+<tr>
+  <td><strong>起きた朝の日付</strong></td>
+  <td>この睡眠から<strong>最後に起きた朝の日付</strong>を入れてください。寝た日ではなく、起きた日です。</td>
+  <td>22日 午前2:00に眠ろうとして、22日 午前8:00に起きた → <strong>22日</strong></td>
+</tr>
+<tr>
+  <td><strong>眠るためにベッド・布団に入った時刻</strong></td>
+  <td>テレビを見る、読書をするためではなく、<strong>「これから眠るつもり」でベッド・布団に入った時刻</strong>です。</td>
+  <td>午前1:30に眠るために布団へ入った → <strong>1:30</strong></td>
+</tr>
+<tr>
+  <td><strong>電気やスマホをやめて、眠ろうとした時刻</strong></td>
+  <td>照明を消したり、スマホ・テレビをやめたりして、<strong>実際に眠ろうとし始めた時刻</strong>です。</td>
+  <td>午前2:00から眠ろうとした → <strong>2:00</strong></td>
+</tr>
+<tr>
+  <td><strong>眠ろうとしてから、寝つくまでにかかった時間（分）</strong></td>
+  <td>上の「眠ろうとした時刻」から、実際に眠ったと思うまでの<strong>だいたいの時間</strong>です。</td>
+  <td>2:00から眠ろうとして、2:30ごろ眠った → <strong>30分</strong></td>
+</tr>
+<tr>
+  <td><strong>寝ついたあと、夜中に目が覚めていた時間の合計（分）</strong></td>
+  <td>いったん眠ったあと、夜中に目が覚めて<strong>眠れずに起きていた時間をすべて足した時間</strong>です。トイレで起きた時間も含めます。</td>
+  <td>10分、20分、15分起きていた → <strong>合計45分</strong></td>
+</tr>
+<tr>
+  <td><strong>朝、最後に目が覚めた時刻</strong></td>
+  <td>朝に目が覚めて、<strong>そのあともう眠らなかった時刻</strong>です。目覚まし時計が鳴った時刻ではなく、実際に最後に目が覚めた時刻を入れてください。</td>
+  <td>7:40に目が覚め、その後は眠らなかった → <strong>7:40</strong></td>
+</tr>
+<tr>
+  <td><strong>朝、ベッド・布団から出た時刻</strong></td>
+  <td>最後に目が覚めたあと、実際に<strong>ベッド・布団から出て起き上がった時刻</strong>です。</td>
+  <td>7:40に目覚め、8:00に布団から出た → <strong>8:00</strong></td>
+</tr>
+<tr>
+  <td><strong>昼寝・うたた寝をした時間の合計（分）</strong></td>
+  <td>その日の昼間に眠った時間をすべて足してください。ベッドでの昼寝だけでなく、ソファなどでの<strong>うたた寝も含みます</strong>。</td>
+  <td>昼に20分＋夕方に10分うたた寝 → <strong>合計30分</strong></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -84,28 +150,41 @@
 </div>
 
 <div class="actions">
-<button type="button" class="secondary" id="add1">1日追加</button>
-<button type="button" class="secondary" id="add7">7日追加</button>
+<button type="button" class="secondary" id="add1">記録する日を1日分追加</button>
+<button type="button" class="secondary" id="add7">記録する日を7日分追加</button>
 </div>
 
 <div class="tablewrap">
 <table id="diaryTable">
 <thead>
-<tr><th>起きた朝の日付</th><th>就床</th><th>消灯</th><th>寝つくまで</th><th>夜間覚醒合計</th><th>最終覚醒</th><th>離床</th><th>昼寝</th><th>TIB</th><th>TST</th><th>SE</th><th></th></tr>
+<tr>
+<th>起きた朝の日付</th>
+<th>眠るために寝床へ入った時刻</th>
+<th>眠ろうとした時刻</th>
+<th>寝つくまで（分）</th>
+<th>夜中に起きていた合計（分）</th>
+<th>朝、最後に目が覚めた時刻</th>
+<th>朝、寝床から出た時刻</th>
+<th>昼寝・うたた寝合計（分）</th>
+<th>寝床にいた時間</th>
+<th>眠っていたと推定される時間</th>
+<th>睡眠効率</th>
+<th></th>
+</tr>
 </thead>
 <tbody></tbody>
 </table>
 </div>
 
-<div class="actions"><button type="button" class="primary" id="calc">計算する</button></div>
+<div class="actions"><button type="button" class="primary" id="calc">睡眠時間などを計算する</button></div>
 
 <div class="metricgrid">
-<div class="metric"><small>有効記録日数</small><b id="daysOut">—</b></div>
-<div class="metric"><small>平均TIB</small><b id="avgTIB">—</b></div>
-<div class="metric"><small>平均TST</small><b id="avgTST">—</b></div>
-<div class="metric"><small>平均SE</small><b id="avgSE">—</b></div>
-<div class="metric"><small>平均SOL</small><b id="avgSOL">—</b></div>
-<div class="metric"><small>平均WASO</small><b id="avgWASO">—</b></div>
+<div class="metric"><small>計算に使えた日数</small><b id="daysOut">—</b></div>
+<div class="metric"><small>平均：寝床にいた時間</small><b id="avgTIB">—</b></div>
+<div class="metric"><small>平均：眠っていたと推定される時間</small><b id="avgTST">—</b></div>
+<div class="metric"><small>平均：睡眠効率</small><b id="avgSE">—</b></div>
+<div class="metric"><small>平均：寝つくまでの時間</small><b id="avgSOL">—</b></div>
+<div class="metric"><small>平均：夜中に起きていた時間</small><b id="avgWASO">—</b></div>
 </div>
 <div id="err" class="alert red hidden"></div>
 </section>
@@ -116,23 +195,23 @@
 睡眠記録は、ブラウザのIndexedDBという保存領域を使って、今お使いのPCやスマートフォン内に自動保存されます。医院や外部サーバーへの保存・送信は行いません。
 </div>
 <div class="actions">
-<button type="button" class="secondary" id="exportData">バックアップを書き出す</button>
-<button type="button" class="secondary" id="importData">バックアップを読み込む</button>
+<button type="button" class="secondary" id="exportData">記録をファイルに保存する（バックアップ）</button>
+<button type="button" class="secondary" id="importData">保存した記録をこのPCやスマートフォンに戻す</button>
 <input id="importFile" type="file" accept="application/json,.json" class="hidden">
-<button type="button" class="danger" id="deleteSaved">このPCやスマートフォンの記録をすべて削除</button>
+<button type="button" class="danger" id="deleteSaved">このPCやスマートフォンに保存した睡眠記録をすべて削除</button>
 </div>
-<div class="small">※ バックアップファイルにも睡眠記録が含まれます。ご自身で管理できる安全な場所に保管してください。</div>
+<div class="small">※ 「バックアップ」は、今までの睡眠記録を1つのファイルとして保存しておくことです。PCやスマートフォンを変更するときや、記録が消える場合に備えて使えます。バックアップファイルにも睡眠記録が入っているため、ご自身で管理できる安全な場所に保管してください。</div>
 </section>
 
 <section class="card">
 <h2>4. 診察時に医師へ見せる内容</h2>
 <div class="alert blue">
-「診察用表示を作成」を押すと、背景情報・平均値・各日の記録をまとめて表示します。この画面を医師に見せるか、必要に応じて紙へ転記してください。
+「医師に見せるまとめ画面を作る」を押すと、睡眠時間の平均と毎日の記録を1つの画面にまとめます。診察のときに、この画面を医師へ見せてください。
 </div>
-<div class="actions"><button type="button" class="primary" id="makePaper">診察用表示を作成</button></div>
+<div class="actions"><button type="button" class="primary" id="makePaper">医師に見せるまとめ画面を作る</button></div>
 <div id="paperArea" class="paper">
 <h3>診察用まとめ</h3>
-<div id="paperText">「診察用表示を作成」を押してください。</div>
+<div id="paperText">「医師に見せるまとめ画面を作る」を押してください。</div>
 </div>
 </section>
 
@@ -151,8 +230,9 @@
 </section>
 
 <section class="card">
-<h2>略語の説明</h2>
+<h2>計算で使う言葉の説明</h2>
 <div class="small">
+画面ではできるだけ日本語で表示しています。医療者が使う略語は次の意味です。<br>
 <strong>TIB</strong>：Time in Bed＝寝床にいた時間<br>
 <strong>TST</strong>：Total Sleep Time＝実際に眠っていたと推定される時間<br>
 <strong>SOL</strong>：Sleep Onset Latency＝消灯後、寝つくまでの時間<br>
